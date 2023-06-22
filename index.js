@@ -31,7 +31,7 @@ form.addEventListener('submit', e => {
 e.preventDefault()
 fetch(scriptURL, { method: 'POST', body: new FormData(form)})
     .then(response => {
-        msg.innerHTML = "Message sent successfully!"
+        msg.innerHTML = "Thanks for your feedback!"
         setTimeout(function() {
             msg.innerHTML = ""
         }, 5000)
@@ -39,3 +39,23 @@ fetch(scriptURL, { method: 'POST', body: new FormData(form)})
     })
     .catch(error => console.error('Error!', error.message))
 })
+
+// ... existing JavaScript code ...
+
+// Scroll to top button functionality
+const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
+
+window.onscroll = function () {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollToTopBtn.style.visibility = 'visible';
+        scrollToTopBtn.style.opacity = '1';
+    } else {
+        scrollToTopBtn.style.visibility = 'hidden';
+        scrollToTopBtn.style.opacity = '0';
+    }
+};
+
+scrollToTopBtn.addEventListener('click', () => {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, Opera
+});
